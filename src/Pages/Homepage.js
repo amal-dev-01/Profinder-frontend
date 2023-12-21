@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import AuthContext from '../Context/AuthContext'
-import {Box} from '@mui/material'
+import { Box } from '@mui/material'
 
 const Homepage = () => {
     const {logout}=useContext(AuthContext)
@@ -9,16 +9,9 @@ const Homepage = () => {
         <h1>Home page</h1>
         <button onClick={logout}>logout</button>
         <Box>
-            <Box>
-                
-
-            </Box>
-
-
-            <Box>
-
-            </Box>
-
+        <Box>
+      
+        </Box>
         </Box>
 
     </div>

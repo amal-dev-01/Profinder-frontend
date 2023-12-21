@@ -14,6 +14,8 @@ export const AuthProvider = ({ children }) => {
 
     const [token, setToken] = useState(localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
     const [user, setUser] = useState(localStorage.getItem('token') ? jwtDecode(localStorage.getItem('token')) : null);
+    const [errorMessage, setErrorMessage] = useState('');
+
 
     const login = async (e) => {
 
@@ -39,6 +41,19 @@ export const AuthProvider = ({ children }) => {
 
         } catch (error) {
             console.error('Error during login:', error);
+            if (error.response) {
+                const statusCode = error.response.status;
+                if (statusCode === 400) {
+                  setErrorMessage('Invalid email or password. Please try again.');
+                } else if (statusCode === 401) {
+                  setErrorMessage('Authentication failed. Please check your credentials.');
+                } else {
+                  setErrorMessage('An unexpected error occurred. Please try again.');
+                }
+              } else {
+                setErrorMessage('An unexpected error occurred. Please try again.');
+              }
+            
         }
     };
 
@@ -74,14 +89,11 @@ export const AuthProvider = ({ children }) => {
 
     
 
-
-
-
-
     const contextData = {
         login: login,
         logout: logout,
         token : token,
+        errorMessage:errorMessage
     };
 
     return (
