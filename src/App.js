@@ -7,6 +7,9 @@ import { AuthProvider } from './Context/AuthContext';
 import Register from './Pages/Register';
 import Header from './Pages/Header';
 import Otppage from './Components/Verification/Otppage';
+import Forgotpasswordpage from './Pages/Forgotpasswordpage';
+import Profile from './Pages/Profile';
+import Editprofile from './Pages/Editprofile';
 
 
 
@@ -21,6 +24,13 @@ function App() {
         <Route path='/register' element={<Register/>}/>
         <Route path='/header' element={<Header/>}/>
         <Route path='/otp/:email' element={<Otppage/>}/>
+        <Route path='/forgotpassword' element={<Forgotpasswordpage/>}/>
+        <Route path='/profile' element={<Profile/>}/>
+        <Route path='/edit' element={<Editprofile/>}/>
+
+
+
+
 
         </Routes>
         </AuthProvider>
