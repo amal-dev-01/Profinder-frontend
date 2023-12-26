@@ -1,66 +1,54 @@
-import React, { useState } from 'react';
-import './Editprofile.css';
+import React, { useContext, useEffect, useState } from 'react';
+import AuthContext from '../Context/AuthContext';
+import axios from 'axios';
 
-const Editprofile= () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    profilePicture: null,
-  });
+const EditProfile = () => {
+  const { user, token } = useContext(AuthContext);
+  const [profileData, setProfileData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const handleChange = (e) => {
-    const { name, value, files } = e.target;
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get("http://127.0.0.1:8000/userprofile/", {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + String(token.access),
+        },
+      });
 
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: files ? files[0] : value,
-    }));
+      if (response.status === 200) {
+        const data = await response.data;
+        console.log(data);
+        setProfileData(data);
+      } else {
+        setError('Error fetching data');
+      }
+    } catch (error) {
+      setError('Error fetching data');
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Add logic to handle form submission, e.g., send data to server
-    console.log('Form submitted:', formData);
-  };
+  useEffect(() => {
+    fetchData();
+  }, []); 
 
   return (
-    <div className="container">
-      <h2>Edit Profile</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Name:</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          placeholder="Your Name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-        />
-
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Your Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-
-        <label htmlFor="profile-picture">Profile Picture:</label>
-        <input
-          type="file"
-          id="profile-picture"
-          name="profilePicture"
-          onChange={handleChange}
-        />
-
-        <button type="submit">Save Changes</button>
-      </form>
+    <div>
+      {loading && <p>Loading...</p>}
+      {error && <p>Error: {error}</p>}
+      {profileData && (
+        <div>
+          <p>User ID: {profileData.username}</p>
+          {/* Display other profile data as needed */}
+        </div>
+      )}
+      <button onClick={fetchData}>Fetch Data</button>
     </div>
   );
 };
 
-export default Editprofile;
+export default EditProfile;

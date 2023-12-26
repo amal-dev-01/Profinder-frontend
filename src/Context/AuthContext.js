@@ -93,6 +93,7 @@ export const AuthProvider = ({ children }) => {
         login: login,
         logout: logout,
         token : token,
+        user:user,
         errorMessage:errorMessage
     };
 
