@@ -1,38 +1,58 @@
 import React, { useContext } from 'react'
 import AuthContext from '../Context/AuthContext'
-import { Box } from '@mui/material'
+import { Box, Button } from '@mui/material'
 import Navbar from './Navbar'
-// import './Homepage.css'
+import './Homepage.css'
 
 const Homepage = () => {
-    const {logout}=useContext(AuthContext)
-    const webStyles = {
-      backgroundImage: "url(https://images.unsplash.com/photo-1682687982360-3fbab65f9d50?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
-      backgroundSize: 'cover',
-      backgroundClip: 'text',
-      WebkitBackgroundClip: 'text',
-      color: '#fff', // Text color
-      fontSize: '2rem', // Adjust the font size
-      textAlign: 'center', // Center the text
-      padding: '20px', // Add some padding for better readability
-    };
-  
+  const { logout } = useContext(AuthContext)
+
+
   return (
     <div>
       <header>
-        <Navbar/>
+        <Navbar />
+  
       </header>
-      <div style={webStyles}>
-      <p>Connect with</p>
-      <br />
-      <p>Professional</p>
-    </div>
-        <button onClick={logout}>logout</button>
-        <Box>
-        <Box>
-      
-        </Box>
-        </Box>
+      <div>
+      <div className='maindiv'>
+        <div className='fname'>
+          Connect with Professional
+        </div>
+      </div>
+
+      <div className='titlepage'>
+
+        <div className='titlecard' >
+        Connecting needs with expertise, one job at a time
+        </div>
+        <div className='titlecard' >
+        Crafting a community of expertise
+        </div>
+        <div className='titlecard' >
+        Empowering professionals, enriching lives
+        </div>
+      </div>
+<div>
+
+  </div>
+  <div className='mainimg'>
+  <div className='imgcard'>
+<div className='f2'>
+  <div className='f3'>
+  From needs to 
+deeds, we've got 
+the professionals
+for every task
+  </div>
+<div style={{marginLeft:"20%"}}>
+<Button variant='outlined'   style={{ color: 'white', backgroundColor: 'black',width:"190px " }}>Learn More</Button>
+</div>
+</div>
+</div>
+
+  </div>
+      </div>
 
     </div>
   )

@@ -1,2 +1,88 @@
 
+.maindiv{
+    margin: 5%;
+    width: 745px;
+    height: 435px;
+    top: 85px;
+    left: 138px;
+    
+}
+.fname {
+    font-family: Inter;
+    font-size: 150px;
+    font-weight: 300;
+    line-height: 145px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: rgb(126, 125, 125);
+  }
   
+
+/* .titlepage{
+display: flex;
+justify-content: center;
+margin: 50px;
+
+
+  } */
+  .titlepage {
+    display: flex;
+    
+    
+}
+
+.titlecard{
+    width: 300px;
+    height: 150px;
+    font-family: Inter;
+    font-size: 25px;
+    font-weight: 300;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    box-sizing: border-box; 
+    
+}
+
+.mainimg{
+    padding: 7%;
+    display: flex;
+    justify-content: center;
+}
+.imgcard {
+    width: 1200px;
+    height: 600px;
+    background-image: url('https://s3-alpha-sig.figma.com/img/9c6c/e0ca/76484c5075e5d5eda99f660e991a4d11?Expires=1704672000&Signature=b0cdqJVTy~aE6cRw3m6PXorWQDOgfOAO79fPpgtdYn1Nro3AvPHuldOv~05F91OdjuKFoW4m34vxBLT3hUlxs8ZF8Jn68zBiFKA5mvqSkoeRIDMbFPK4D~zbYeNHKSePfzPhLv46QxoPC~AHIAPsvMu6puzqqaEMC5xG7ZkcHnlLdT~2BWw0AbuMd53YL7mlp99WeccidxXheqZHRPgeIePtuJyTD6d440Iev6KLAnUB981jJWnIeuIj--iS~iLZh6VoYwqrQjNX5HcKAfkXVrRhNU6k1gVY0kw1lxcHwTJB4ErCnzKabpGB6V7WZqIJozN1Jzk7tIfwQpOCg1KHiA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4');
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
+/* 
+  .imgcard img {
+    width: 100%;
+    height: 100%;
+  } */
+
+.f2{
+width: 500px;
+height: 280px;
+top: -3264px;
+left: -15290px;
+
+}
+.f3{
+padding: 50px;
+font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-size: 45px;
+font-weight: 450;
+line-height: 50px;
+color: white;
+text-align: left;
+
+}
+
+
+/* @media (max-width: 400px) {
+  .titlepage {
+    flex-direction: row;
+  }
+} */
