@@ -18,18 +18,19 @@
   }
   
 
-/* .titlepage{
+.titlepage{
 display: flex;
-justify-content: center;
+justify-content: space-between;
 margin: 50px;
 
 
-  } */
-  .titlepage {
+
+  }
+  /* .titlepage {
     display: flex;
     
     
-}
+} */
 
 .titlecard{
     width: 300px;

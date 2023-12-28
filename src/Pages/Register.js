@@ -102,7 +102,7 @@ export default function LoginPage() {
           <Typography>AppLogo</Typography>
         </Box>
         <Box>
-          <Button>Login in</Button>
+          <Button >Login in</Button>
         </Box>
       </Box>
 
