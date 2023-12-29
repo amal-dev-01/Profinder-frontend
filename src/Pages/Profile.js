@@ -1,31 +1,57 @@
-import React, { useContext } from 'react';
 import './Profile.css';
 import { Button } from '@mui/material';
 import axios from 'axios';
 import AuthContext from '../Context/AuthContext';
 
-const Profile = () => {
-    const {token}=useContext(AuthContext)
-    const fetchUsers = async () => {
-        try {
-          const response = await axios.get("http://127.0.0.1:8000/userlist/", {
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': 'Bearer ' + String(token.access),
-            }
-          });
-          if (response.status === 200) {
-            const data = await response.data;
-            console.log(data);
+import React, { useEffect, useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-          } else if (response.status === 401) {
-            alert('hol');
-          }
-        } catch (error) {
-          console.error("Error fetching users:", error);
+
+const Profile = () => {
+  const { token } = useContext(AuthContext);
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const navigate=useNavigate()
+
+  
+  const sendRequest = (e) => {
+    const id = e.target.id;
+    navigate(`/follow/${id}`);
+  }
+  
+
+  const fetchUsers = async () => {
+    try {
+      const response = await axios.get("http://127.0.0.1:8000/userlist/", {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + String(token.access),
         }
+      });
+
+      if (response.status === 200) {
+        const data = response.data;
+        console.log(response.data);
+        setUsers(data);
+      } else if (response.status === 401) {
+        setError('Unauthorized');
       }
-    
+    } catch (error) {
+      console.error("Error fetching users:", error);
+      setError('Error fetching users');
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
+
+
+  
   return (
     <div>
         <div>
@@ -38,7 +64,20 @@ const Profile = () => {
                 <div class='name'>Marry jon</div>
                 <div className='btn'>
                     <Button>Edit Profile</Button>
-                    <Button onClick={fetchUsers}>Add Post</Button>
+                    {/* <Button onClick={fetchUsers}>Add Post</Button>   */}
+
+                    {users.length > 0 && (
+  <div>
+    {users.map(user => (
+      <div key={user.id}>
+        <p>{user.username}</p>
+        <Button id={user.id} onClick={sendRequest}>Follow</Button> 
+      </div>
+    ))}
+  </div>
+)}
+
+
                 </div>
                 </div>
             </div>

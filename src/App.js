@@ -10,7 +10,8 @@ import Otppage from './Components/Verification/Otppage';
 import Forgotpasswordpage from './Pages/Forgotpasswordpage';
 import Profile from './Pages/Profile';
 import Editprofile from './Pages/Editprofile';
-
+import Userlist from './Pages/Userlist';
+import Follow from './Pages/follow';
 
 
 function App() {
@@ -27,6 +28,10 @@ function App() {
         <Route path='/forgotpassword' element={<Forgotpasswordpage/>}/>
         <Route path='/profile' element={<Profile/>}/>
         <Route path='/edit' element={<Editprofile/>}/>
+        <Route path='/follow/:id' element={<Userlist/>}/>
+        <Route path='/followdetails' element={<Follow/>}/>
+
+
 
 
 
